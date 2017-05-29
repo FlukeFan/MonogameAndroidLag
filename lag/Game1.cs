@@ -80,6 +80,10 @@ namespace lag
             }
 
             // TODO: Add your update logic here
+            var touches = TouchPanel.GetState();
+
+            if (touches.Count > 0)
+                monogamePosition = touches[0].Position - halfSprite;
 
             base.Update(gameTime);
         }
@@ -91,11 +95,6 @@ namespace lag
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
-            var touches = TouchPanel.GetState();
-
-            if (touches.Count > 0)
-                monogamePosition = touches[0].Position - halfSprite;
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
